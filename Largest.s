@@ -1,0 +1,30 @@
+// Find the largest element
+
+VALUE EQU 0X1FFFF000
+
+		AREA TEST,CODE,READONLY
+		EXPORT __main
+__main
+		
+		LDR R0,=VALUE
+		MOVS R1,#0
+		MOVS R2,#0
+		
+L1		LDRB R3,[R0]
+		CMP R3,R2
+		BGT L2
+		
+		ADDS R0,#1
+		ADDS R1,#1
+		CMP R1,#10
+		BNE L1
+		B L3
+
+L2     MOVS R2,R3
+		ADDS R0,#1
+		ADDS R1,#1
+		CMP R1,#10
+		BNE L1
+
+L3		NOP
+		END
