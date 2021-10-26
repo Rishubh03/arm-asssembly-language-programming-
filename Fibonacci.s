@@ -1,0 +1,23 @@
+// 0 1 1 2 3 5 8 13....
+
+value1 EQU 0X1FFFF000
+value2 EQU 0X1FFFF001
+		AREA FIBONACCI, CODE, READONLY
+		EXPORT __main
+__main
+
+		LDR R0,=value1
+		LDR R1,=value2
+		LDRB R2,[R0]
+		LDRB R3,[R1]
+		MOVS R4,#20
+L1 		ADDS R5,R2,R3
+		ADDS R1,#1
+		STRB R5,[R1]
+		MOV R2,R3
+		MOV R3,R5
+		SUBS R4,R4,#1
+		CMP R4,#2
+		BNE L1
+
+		END
