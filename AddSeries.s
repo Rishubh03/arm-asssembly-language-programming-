@@ -1,0 +1,20 @@
+//a1+a2+a3+a4+a5+a6+a7+a8+a9+a10
+
+VALUE EQU 0X1FFFF000
+		AREA TEST,CODE,READONLY
+		EXPORT __main
+__main
+		
+		LDR R0,=VALUE
+		MOVS R2,#0
+		
+L1		LDRB R1,[R0]
+		ADDS R3,R3,R1
+		ADDS R0,#1
+		ADDS R2,R2,#1
+		CMP R2,#10
+		BNE L1
+		STRB R3,[R0]
+		
+		END 
+			
